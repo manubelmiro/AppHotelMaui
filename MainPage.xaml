@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+x:Class="AppHotel.MainPage"
+Title="App Reserva Hotel MAUI">
+<ScrollView>
+<VerticalStackLayout Padding="30" Spacing="20">
+<!-- Título do Aplicativo -->
+<Label Text= "Você esta no App Hotel" 
+FontSize="24" 
+FontAttributes="Bold" 
+HorizontalOptions="Center" />
+<!-- Escolha do Tipo de Quarto (Picker) -->
+<Label Text="Escolha o quarto:" FontSize="16" />
+<Picker x:Name="opcao_quarto" Title="Escolha seu quarto">
+<Picker.ItemsSource>
+<x:Array Type="{x:Type x:String}">
+<x:String>Suíte Presidencial</x:String>
+<x:String>Quarto Solteiro</x:String>
+<x:String>Quarto Casal</x:String>
+</x:Array>
+</Picker.ItemsSource>
+</Picker>
+<!-- Quantidade de Hóspedes (Stepper) -->
+<Label Text="Número de Hóspedes:" FontSize="16" />
+<HorizontalStackLayout Spacing="15">
+<Stepper x:Name="stepperHospedes" Minimum="1" Maximum="5" Increment="1" Value="1" />
+<Label Text="{Binding Source={x:Reference stepperHospedes}, Path=Value}" FontSize="18" VerticalOptions="Center" />
+</HorizontalStackLayout>
+<!-- Datas de Entrada e Saída (DatePicker) -->
+<Label Text="Data CheckIn:" FontSize="16" />
+<DatePicker x:Name="datePickerEntrada" Format="dd/MM/yyyy" />
+<Label Text="Data CheckOut:" FontSize="16" />
+<DatePicker x:Name="datePickerSaida" Format="dd/MM/yyyy" />
+<!-- Botão para Ir à Tela Sobre -->
+<Button Text="Sobre o Desenvolvedor" 
+Clicked="OnBotaoSobreClicked" 
+BackgroundColor="Magenta" 
+TextColor="White" />
+</VerticalStackLayout>
+</ScrollView>
+</ContentPage>
