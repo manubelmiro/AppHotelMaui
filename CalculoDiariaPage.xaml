@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppHotel.CalculoDiariaPage"
+             Title="Cálculo de Diária"
+             BackgroundColor="#F9FAFB"
+             Shell.BackgroundColor="#0F172A"
+             Shell.TitleColor="White">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="25" Spacing="18">
+
+            <!-- Título da Página -->
+            <Border Stroke="#4B5563"
+                    StrokeThickness="1.5"
+                    BackgroundColor="#F3F4F6"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="15"
+                    HorizontalOptions="Center"
+                    Margin="5">
+                <Label Text="Faça sua Reserva" 
+                       FontSize="20" 
+                       FontAttributes="Bold" 
+                       TextColor="#1F2937"
+                       HorizontalOptions="Center" />
+            </Border>
+
+            <!-- Escolha do Quarto -->
+            <Label Text="Escolha o quarto:" FontSize="16" TextColor="#374151" FontAttributes="Bold" />
+<Picker x:Name="pck_quarto" Title="Quartos disponíveis">
+    <Picker.ItemsSource>
+        <x:Array Type="{x:Type x:String}">
+            <x:String>Suíte Presidencial</x:String>
+            <x:String>Solteiro</x:String>
+            <x:String>Casal</x:String>
+        </x:Array>
+    </Picker.ItemsSource>
+</Picker>
+
+            <!-- Stepper Adultos -->
+            <Label Text="Quantidade de Adultos:" FontSize="15" TextColor="#374151" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="15">
+                <Stepper x:Name="stp_adultos" Minimum="1" Maximum="3" Increment="1" Value="1" />
+                <Label Text="{Binding Source={x:Reference stp_adultos}, Path=Value}" FontSize="18" VerticalOptions="Center" TextColor="#1F2937" />
+            </HorizontalStackLayout>
+
+            <!-- Stepper Crianças -->
+            <Label Text="Quantidade de Crianças:" FontSize="15" TextColor="#374151" FontAttributes="Bold" />
+            <HorizontalStackLayout Spacing="15">
+                <Stepper x:Name="stp_criancas" Minimum="0" Maximum="2" Increment="1" Value="0" />
+                <Label Text="{Binding Source={x:Reference stp_criancas}, Path=Value}" FontSize="18" VerticalOptions="Center" TextColor="#1F2937" />
+            </HorizontalStackLayout>
+
+            <!-- Datas -->
+            <Label Text="Data de Check-in:" FontSize="15" TextColor="#374151" FontAttributes="Bold" />
+            <DatePicker x:Name="dtpck_checkin" Format="dd/MM/yyyy" />
+
+            <Label Text="Data de Check-out:" FontSize="15" TextColor="#374151" FontAttributes="Bold" />
+            <DatePicker x:Name="dtpck_checkout" Format="dd/MM/yyyy" />
+
+            <!-- Botão de Calcular -->
+            <Button Text="Calcular Valor" 
+                    Clicked="OnCalcularClicked" 
+                    BackgroundColor="#374151" 
+                    TextColor="White" 
+                    CornerRadius="8"
+                    Margin="0,10,0,0" />
+
+            <!-- Resultado da Diária -->
+            <Border x:Name="frame_resultado"
+                    Stroke="#D1D5DB"
+                    StrokeThickness="1"
+                    BackgroundColor="White"
+                    StrokeShape="RoundRectangle 12"
+                    Padding="15"
+                    IsVisible="False">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Resumo da Estadia" FontAttributes="Bold" FontSize="16" TextColor="#1F2937" />
+                    <Label x:Name="lbl_resultado" FontSize="14" TextColor="#4B5563" />
+                </VerticalStackLayout>
+            </Border>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

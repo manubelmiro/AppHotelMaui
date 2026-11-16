@@ -7,8 +7,13 @@ public partial class MainPage : ContentPage
         InitializeComponent();
     }
 
-    private void OnBotaoSobreClicked(object sender, EventArgs e)
+    private async void OnBotaoSobreClicked(object sender, EventArgs e)
     {
-        Navigation.PushAsync(new SobrePage());
+        await Navigation.PushAsync(new SobrePage());
+    }
+
+    private async void OnBotaoCalcularClicked(object sender, EventArgs e)
+    {
+        await Navigation.PushAsync(new CalculoDiariaPage());
     }
 }
